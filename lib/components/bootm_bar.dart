@@ -62,7 +62,7 @@ class BottomBar extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Icon(
-                          FontAwesomeIcons.shoppingBag,
+                          FontAwesomeIcons.cartPlus,
                           color: Colors.grey,
                           size: 25,
                         ),

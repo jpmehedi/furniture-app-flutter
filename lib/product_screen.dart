@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:furniture_app/cart_screen.dart';
 import 'package:furniture_app/components/carosuel_card_builder.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:furniture_app/components/custom_appbar.dart';
@@ -23,6 +24,65 @@ class _ProductScreenState extends State<ProductScreen> {
         drawer: Drawer(),
         appBar: CustomAppBar(
           height: 50,
+          child: Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xffEAF3FE),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xffE6EEFE),
+                        spreadRadius: 0,
+                        blurRadius: 1,
+                        offset: Offset(1, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  width: 107,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: IconButton(
+                      icon: Icon(
+                        FontAwesomeIcons.alignLeft,
+                        color: Colors.black,
+                      ),
+                      onPressed: () => _scaffoldKey.currentState.openDrawer(),
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(right: 20),
+                  child: Row(
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(
+                          FontAwesomeIcons.search,
+                          color: Colors.black,
+                        ),
+                        onPressed: () {},
+                      ),
+                      Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color: Color(0xffE6EEFE),
+                            width: 4,
+                          ),
+                        ),
+                        child: ClipOval(
+                          child: Image.asset('images/profile.jpg'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
@@ -35,7 +95,10 @@ class _ProductScreenState extends State<ProductScreen> {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomBar(
           onTapHome: () {},
-          onTapProduct: () {},
+          onTapProduct: () {
+            Route route = MaterialPageRoute(builder: (context) => CartScreen());
+            Navigator.push(context, route);
+          },
         ),
         body: SingleChildScrollView(
           child: Container(
