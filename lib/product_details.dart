@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:furniture_app/components/custom_appbar.dart';
 
 class ProductDetails extends StatefulWidget {
   @override
@@ -9,6 +8,7 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
+  int quantity = 1;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -60,6 +60,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                   child: Image.asset('images/armchair_long.png'),
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
               Expanded(
                 flex: 1,
                 child: Container(
@@ -86,21 +89,40 @@ class _ProductDetailsState extends State<ProductDetails> {
                         ),
                         child: Image.asset('images/armchair.png'),
                       ),
-                      Container(
-                        child: Image.asset('images/armchair.png'),
+                      ColorFiltered(
+                        colorFilter: ColorFilter.mode(
+                            Colors.grey.withOpacity(0.4), BlendMode.dstATop),
+                        child: Container(
+                          child: Image.asset('images/arm2.png'),
+                        ),
                       ),
-                      Container(
-                        child: Image.asset('images/armchair.png'),
+                      ColorFiltered(
+                        colorFilter: ColorFilter.mode(
+                            Colors.grey.withOpacity(0.4), BlendMode.dstATop),
+                        child: Container(
+                          child: Image.asset('images/arm4.png'),
+                        ),
                       ),
-                      Container(
-                        child: Image.asset('images/armchair.png'),
+                      ColorFiltered(
+                        colorFilter: ColorFilter.mode(
+                            Colors.grey.withOpacity(0.4), BlendMode.dstATop),
+                        child: Container(
+                          child: Image.asset('images/arm5.png'),
+                        ),
                       ),
-                      Container(
-                        child: Image.asset('images/armchair.png'),
-                      )
+                      ColorFiltered(
+                        colorFilter: ColorFilter.mode(
+                            Colors.grey.withOpacity(0.4), BlendMode.dstATop),
+                        child: Container(
+                          child: Image.asset('images/arm4.png'),
+                        ),
+                      ),
                     ],
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 10,
               ),
               Expanded(
                 flex: 5,
@@ -138,24 +160,28 @@ class _ProductDetailsState extends State<ProductDetails> {
                                   ),
                                   Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
+                                        MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
                                       Container(
-                                        width: 20,
-                                        height: 20,
+                                        width: 30,
+                                        height: 30,
                                         decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Colors.pink,
-                                        ),
-                                        child: Container(
-                                          width: 30,
-                                          height: 30,
-                                          decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(20),
                                             border: Border.all(
+                                              width: 1,
                                               color: Colors.pink,
-                                              width: 3,
+                                              style: BorderStyle.solid,
+                                            )),
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Container(
+                                            width: 20,
+                                            height: 20,
+                                            margin: EdgeInsets.all(5),
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Colors.pink,
                                             ),
                                           ),
                                         ),
@@ -194,7 +220,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                             ),
                           ),
                           SizedBox(
-                            width: 40,
+                            width: 70,
                           ),
                           Expanded(
                             flex: 1,
@@ -215,28 +241,64 @@ class _ProductDetailsState extends State<ProductDetails> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
-                                      Container(
-                                        width: 30,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.rectangle,
-                                          color: Color(0xffE9F2FE),
-                                          borderRadius:
-                                              BorderRadius.circular(8),
+                                      RawMaterialButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            quantity++;
+                                          });
+                                        },
+                                        constraints: BoxConstraints(
+                                          maxHeight: 30,
+                                          maxWidth: 30,
                                         ),
-                                        child: Icon(FontAwesomeIcons.plus),
+                                        materialTapTargetSize:
+                                            MaterialTapTargetSize.shrinkWrap,
+                                        child: Container(
+                                          width: 30,
+                                          height: 30,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.rectangle,
+                                            color: Color(0xffE9F2FE),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          child: Center(
+                                              child: Text(
+                                            '+',
+                                            style: TextStyle(fontSize: 20),
+                                          )),
+                                        ),
                                       ),
-                                      Text("1"),
-                                      Container(
-                                        width: 30,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.rectangle,
-                                          color: Color(0xffE9F2FE),
-                                          borderRadius:
-                                              BorderRadius.circular(8),
+                                      Text(
+                                        quantity.toString(),
+                                      ),
+                                      RawMaterialButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            quantity--;
+                                          });
+                                        },
+                                        constraints: BoxConstraints(
+                                          maxHeight: 30,
+                                          maxWidth: 30,
                                         ),
-                                        child: Icon(FontAwesomeIcons.minus),
+                                        materialTapTargetSize:
+                                            MaterialTapTargetSize.shrinkWrap,
+                                        child: Container(
+                                          width: 30,
+                                          height: 30,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.rectangle,
+                                            color: Color(0xffE9F2FE),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          child: Center(
+                                              child: Text(
+                                            '-',
+                                            style: TextStyle(fontSize: 20),
+                                          )),
+                                        ),
                                       )
                                     ],
                                   )
