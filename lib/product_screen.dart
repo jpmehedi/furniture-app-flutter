@@ -5,6 +5,7 @@ import 'package:furniture_app/cart_screen.dart';
 import 'package:furniture_app/components/carosuel_card_builder.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:furniture_app/components/custom_appbar.dart';
+import 'package:furniture_app/product_details.dart';
 import 'components/bootm_bar.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -174,22 +175,34 @@ class _ProductScreenState extends State<ProductScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Expanded(
-                            child: SellingCardBuilder(
-                              image: Image.asset('images/chairpink.png'),
-                              productName: 'Wingback Chair',
-                              description: 'Modern Saddle Arms and Women Legs',
-                              price: '₹1,512',
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: SellingCardBuilder(
+                                image: Image.asset('images/chairpink.png'),
+                                productName: 'Wingback Chair',
+                                description:
+                                    'Modern Saddle Arms and Women Legs',
+                                price: '₹1,512',
+                              ),
                             ),
                           ),
                           SizedBox(
                             width: 10,
                           ),
                           Expanded(
-                            child: SellingCardBuilder(
-                              image: Image.asset('images/armchair.png'),
-                              productName: 'Nashville Armchair',
-                              description: 'Modern Saddle Arms and Women Legs',
-                              price: '₹1,895',
+                            child: GestureDetector(
+                              onTap: () {
+                                Route route = MaterialPageRoute(
+                                    builder: (context) => ProductDetails());
+                                Navigator.push(context, route);
+                              },
+                              child: SellingCardBuilder(
+                                image: Image.asset('images/armchair.png'),
+                                productName: 'Nashville Armchair',
+                                description:
+                                    'Modern Saddle Arms and Women Legs',
+                                price: '₹1,895',
+                              ),
                             ),
                           )
                         ],
